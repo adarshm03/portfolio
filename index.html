@@ -674,18 +674,24 @@
       </div>
       <div>
          <form class="cf" action="https://formspree.io/f/xqedyogp" method="POST">
-          <div class="cg"><label>Name</label><input type="text" placeholder="Your name" required /></div>
-          <div class="cg"><label>Email</label><input type="email" placeholder="your@email.com" required /></div>
-          <div class="cg"><label>Message</label><textarea rows="4" placeholder="What's on your mind?" required></textarea></div>
-          <button type="submit" class="cbtn"><span>Send Message</span><span>→</span></button>
-          <input type="hidden" name="_next" value="https://adarshm-portfolio.vercel.app" />
-          <input type="text" name="_gotcha" style="display:none" />
-          <input type="hidden" name="_next" value="https://adarshm-portfolio.vercel.app" />
-          <input type="hidden" name="_subject" value="New message from portfolio!" />
-          <input type="hidden" name="_subject" value="New message from portfolio!" />
-          <input type="hidden" name="_next" value="https://adarshm-portfolio.vercel.app" />
-          <input type="text" name="_gotcha" style="display:none" />
-        </form>
+            <div class="cg">
+              <label>Name</label>
+    <input type="text" name="name" placeholder="Your name" required />
+  </div>
+  <div class="cg">
+    <label>Email</label>
+    <input type="email" name="email" placeholder="your@email.com" required />
+  </div>
+  <div class="cg">
+    <label>Message</label>
+    <textarea name="message" rows="4" placeholder="What's on your mind?" required></textarea>
+  </div>
+  <button type="submit" class="cbtn"><span>Send Message</span><span>→</span></button>
+  
+  <input type="hidden" name="_subject" value="New message from portfolio!" />
+  <input type="hidden" name="_next" value="https://adarshm-portfolio.vercel.app" />
+  <input type="text" name="_gotcha" style="display:none" />
+</form>
       </div>
     </div>
   </section>
