@@ -824,7 +824,7 @@ window.addEventListener('scroll', () => {
     }
   }
 
-  const MN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  const MN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec','jan','feb'];
   const seenM = {};
   let mHtml = '';
   days.forEach((d, i) => {
@@ -836,6 +836,10 @@ window.addEventListener('scroll', () => {
   document.getElementById('ghGraph').innerHTML =
     `<div class="cms">${mHtml}</div><div class="cgrid">${cells}</div>`;
 })();
+setTimeout(() => {
+  const gtb = document.querySelector('.gtb');
+  if (gtb) gtb.scrollLeft = gtb.scrollWidth;
+}, 100);
 
 /* ══════════════ GITHUB LANGUAGE API ══════════════ */
 const GH = 'adarshm03';
