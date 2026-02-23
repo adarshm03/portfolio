@@ -86,7 +86,41 @@
     .cli-t { overflow:hidden; white-space:nowrap; border-right:2px solid var(--ac); width:0; animation:typing 1.4s steps(20) .3s forwards,blink 1s step-end infinite; color:var(--t); }
     @keyframes typing { to{width:19ch;} }
     @keyframes blink { 50%{border-color:transparent;} }
+    /* About CLI — below profile */
 
+.about-cli {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  margin: -18px 4px 22px 4px;
+  color: var(--mu);
+}
+
+.about-u {
+  color: var(--ac);
+  font-weight: 600;
+  text-shadow: 0 0 20px var(--ag);
+}
+
+.about-p {
+  color: var(--ac2);
+}
+
+.about-t {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--ac);
+  width: 0;
+  color: var(--t);
+  animation: aboutTyping 1.6s steps(8) 0.6s forwards,
+             blink 1s step-end infinite;
+}
+
+@keyframes aboutTyping {
+  to { width: 8ch; }
+}
     /* HERO */
     .hb { width:100%; height:220px; border-radius:20px; position:relative; overflow:hidden; border:1px solid var(--b); box-shadow:var(--sh); }
     .hb img { width:100%; height:100%; object-fit:cover; filter:saturate(1.1) brightness(.75); transition:.6s; }
@@ -254,9 +288,14 @@
         <div class="htag">Fullstack · Linux · Systems</div>
       </div>
     </div>
+    <div class="about-cli">
+  <span class="about-u">adarsh@linux</span>
+  <span class="about-p">:~$</span>
+  <span class="about-t">./about</span>
+</div>
     <p class="bio">
       Engineering student driven by curiosity. I experiment with operating systems, backend systems, and web technologies — learning by building, breaking, and rebuilding better. Constantly exploring how things work under the hood.<br><br>
-      <strong>Build → Break → Optimize.</strong>
+      <strong>Learn → Build → Break → Improve.</strong>
     </p>
   </div>
 
@@ -345,7 +384,7 @@
     </div>
   </section>
 
-  <!-- EDUCATION — clean timeline, no dollar sign -->
+  <!-- EDUCATION — -->
   <section class="fi">
     <div class="st"><span class="sn">03</span> Education</div>
     <div class="edu-timeline">
