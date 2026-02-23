@@ -61,4 +61,4 @@ No install needed. Open `index.html` directly or serve with any static server.
 
 ---
 
-© 2025 Adarsh M. All rights reserved.
+© 2026 Adarsh M. All rights reserved.
