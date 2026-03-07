@@ -563,7 +563,7 @@ thBtn.addEventListener('click',()=>{
 const mglow=document.getElementById('mglow');
 let gx=-600,gy=-600,gtx=window.innerWidth/2,gty=window.innerHeight/2;
 window.addEventListener('mousemove',e=>{gtx=e.clientX;gty=e.clientY;});
-(function gl(){ gx+=(gtx-gx)*.065; gy+=(gty-gy)*.065; mglow.style.left=gx+'px'; mglow.style.top=gy+'px'; requestAnimationFrame(gl); })();
+(function gl(){ gx+=(gtx-gx)*.18; gy+=(gty-gy)*.18; mglow.style.left=gx+'px'; mglow.style.top=gy+'px'; requestAnimationFrame(gl); })();
 
 /* ══ MAGNETIC SKILL ICONS ══
    The .sk-wrap moves as a unit so the tooltip always stays above the icon. */
@@ -621,7 +621,7 @@ const ORBS=[
 ];
 function h2r(h){ return [parseInt(h.slice(1,3),16),parseInt(h.slice(3,5),16),parseInt(h.slice(5,7),16)]; }
 (function bgL(ts){
-  sy+=(ty2-sy)*.06; cx2.clearRect(0,0,cw,ch);
+  sy+=(ty2-sy)*.16; cx2.clearRect(0,0,cw,ch);
   const dark=H.getAttribute('data-theme')==='dark';
   const sp=Math.min(sy/(document.body.scrollHeight-window.innerHeight+1),1);
   cx2.fillStyle=dark?`hsl(${240+sp*20},15%,${4+sp*3}%)`:`hsl(${50-sp*20},20%,${94-sp*6}%)`;
@@ -668,7 +668,7 @@ window.addEventListener('scroll',()=>{
 
   const scene=new THREE.Scene();
   /* Orthographic-feel: wide FOV so shapes on sides look natural */
-  const camera=new THREE.PerspectiveCamera(50,window.innerWidth/window.innerHeight,0.1,200);
+  const camera=new THREE.PerspectiveCamera(75,window.innerWidth/window.innerHeight,0.1,200);
   camera.position.z=6;
 
   window.addEventListener('resize',()=>{
@@ -695,34 +695,18 @@ window.addEventListener('scroll',()=>{
   */
   const DEFS = [
     // hero section — top
-    { geo:()=>new THREE.IcosahedronGeometry(.78,1),    ci:0, pageY:0.02, side: 1, xBase:4.0, depth:-1.4, rs:{x:.004,y:.006}, fl:{a:.06,s:.7,p:0.0}, ms:{x:.30,y:.24} },
-    { geo:()=>new THREE.OctahedronGeometry(.70,0),     ci:3, pageY:0.06, side:-1, xBase:3.9, depth:-1.6, rs:{x:.007,y:.004}, fl:{a:.07,s:.9,p:1.2}, ms:{x:.24,y:.28} },
-
-    // skills section
-    { geo:()=>new THREE.TorusKnotGeometry(.44,.12,64,8), ci:1, pageY:0.18, side: 1, xBase:4.3, depth:-1.8, rs:{x:.005,y:.007}, fl:{a:.08,s:.8,p:2.1}, ms:{x:.28,y:.32} },
-    { geo:()=>new THREE.TetrahedronGeometry(.72,0),    ci:4, pageY:0.22, side:-1, xBase:4.1, depth:-1.3, rs:{x:.009,y:.005}, fl:{a:.09,s:1.1,p:0.6}, ms:{x:.36,y:.22} },
-
-    // projects section
-    { geo:()=>new THREE.TorusGeometry(.58,.16,9,26),   ci:2, pageY:0.36, side: 1, xBase:4.0, depth:-1.5, rs:{x:.004,y:.003}, fl:{a:.07,s:.6,p:3.0}, ms:{x:.3, y:.36} },
-    { geo:()=>new THREE.DodecahedronGeometry(.62,0),   ci:6, pageY:0.40, side:-1, xBase:4.4, depth:-2.0, rs:{x:.003,y:.006}, fl:{a:.06,s:.55,p:1.8}, ms:{x:.2, y:.28} },
-
-    // education section
-    { geo:()=>new THREE.IcosahedronGeometry(.50,0),    ci:5, pageY:0.55, side: 1, xBase:3.8, depth:-1.2, rs:{x:.008,y:.009}, fl:{a:.10,s:1.2,p:0.4}, ms:{x:.38,y:.26} },
-    { geo:()=>new THREE.TorusKnotGeometry(.36,.10,48,6), ci:7, pageY:0.60, side:-1, xBase:4.2, depth:-1.9, rs:{x:.006,y:.005}, fl:{a:.08,s:.75,p:2.8}, ms:{x:.26,y:.30} },
-
-    // github section
-    { geo:()=>new THREE.OctahedronGeometry(.56,0),     ci:8, pageY:0.72, side: 1, xBase:4.5, depth:-1.6, rs:{x:.005,y:.008}, fl:{a:.07,s:.65,p:1.5}, ms:{x:.22,y:.34} },
-    { geo:()=>new THREE.TetrahedronGeometry(.60,0),    ci:9, pageY:0.76, side:-1, xBase:3.9, depth:-1.4, rs:{x:.010,y:.006}, fl:{a:.09,s:1.0,p:3.4}, ms:{x:.32,y:.20} },
-
-    // contact section — bottom
-    { geo:()=>new THREE.TorusGeometry(.50,.14,8,22),   ci:10,pageY:0.88, side: 1, xBase:4.1, depth:-1.8, rs:{x:.005,y:.004}, fl:{a:.08,s:.7,p:0.9}, ms:{x:.28,y:.30} },
-    { geo:()=>new THREE.DodecahedronGeometry(.54,0),   ci:11,pageY:0.93, side:-1, xBase:4.3, depth:-2.2, rs:{x:.004,y:.007}, fl:{a:.06,s:.6,p:2.3}, ms:{x:.20,y:.26} },
+    { geo:()=>new THREE.IcosahedronGeometry(1.4,1),      ci:0, pageY:0.05, side: 1, xBase:12.5, depth:-3.0, rs:{x:.003,y:.005} },
+    { geo:()=>new THREE.OctahedronGeometry(1.3,0),       ci:3, pageY:0.25, side:-1, xBase:12.5, depth:-3.2, rs:{x:.006,y:.003} },
+    { geo:()=>new THREE.TorusKnotGeometry(.72,.20,64,8), ci:1, pageY:0.45, side: 1, xBase:12.5, depth:-3.4, rs:{x:.004,y:.006} },
+    { geo:()=>new THREE.TetrahedronGeometry(1.35,0),     ci:2, pageY:0.62, side:-1, xBase:12.5, depth:-2.8, rs:{x:.007,y:.004} },
+    { geo:()=>new THREE.TorusGeometry(1.0,.26,9,28),     ci:4, pageY:0.78, side: 1, xBase:12.5, depth:-3.0, rs:{x:.003,y:.004} },
+    { geo:()=>new THREE.DodecahedronGeometry(1.2,0),     ci:5, pageY:0.95, side:-1, xBase:12.5, depth:-3.2, rs:{x:.004,y:.005} },
   ];
 
   /* World height: we spread shapes over a tall virtual space.
      pageY 0→1 maps to worldY +8 → -8  (total 16 units tall) */
-  const WORLD_HEIGHT = 16;
-  function pageYtoWorld(py){ return 8 - py * WORLD_HEIGHT; }
+  const WORLD_HEIGHT = 22;
+  function pageYtoWorld(py){ return 11 - py * WORLD_HEIGHT; }
 
   const objs = DEFS.map(d=>{
     const mesh = wm(d.geo(), d.ci);
@@ -730,50 +714,31 @@ window.addEventListener('scroll',()=>{
     const wy   = pageYtoWorld(d.pageY);
     mesh.position.set(wx, wy, d.depth);
     scene.add(mesh);
-    return { m:mesh, ...d, wx, baseY:wy };
+    return { m:mesh, wx, baseY:wy, rs:d.rs, ci:d.ci };
   });
 
-  /* Mouse tracking */
-  let mxR=0, myR=0, mx=0, my=0;
-  window.addEventListener('mousemove',e=>{
-    mxR=(e.clientX/window.innerWidth)*2-1;
-    myR=-((e.clientY/window.innerHeight)*2-1);
-  });
-
-  /* Scroll tracking */
-  let scrollRaw=0, scrollSmooth=0;
+  let scrollRaw=0;
   window.addEventListener('scroll',()=>{ scrollRaw=window.scrollY; },{passive:true});
 
   let clk=0;
   (function animate(){
     requestAnimationFrame(animate);
-    clk+=.012;
-    mx+=(mxR-mx)*.055; my+=(myR-my)*.055;
+    clk+=.004;
 
-    /* smooth scroll lerp */
-    scrollSmooth+=(scrollRaw-scrollSmooth)*.08;
     const maxScroll=Math.max(document.body.scrollHeight-window.innerHeight,1);
-    const sp=scrollSmooth/maxScroll; // 0→1
+    const sp=scrollRaw/maxScroll;
 
-    /* Camera Y tracks scroll so shapes "scroll past" naturally */
-    const targetCamY = -sp * WORLD_HEIGHT + WORLD_HEIGHT/2 - 8 + (my*.18);
-    camera.position.y+=(targetCamY-camera.position.y)*.07;
-    camera.position.x+=(mx*.22-camera.position.x)*.05;
-    camera.lookAt(new THREE.Vector3(camera.position.x*.3, camera.position.y, 0));
+    /* camera Y maps directly to scroll — no lerp, no jiggle */
+    camera.position.y = -sp * WORLD_HEIGHT + WORLD_HEIGHT/2 - 11;
+    camera.position.x = 0;
+    camera.lookAt(new THREE.Vector3(0, camera.position.y, 0));
 
     objs.forEach(o=>{
-      /* spin */
+      /* only spin — position is completely static */
       o.m.rotation.x+=o.rs.x;
       o.m.rotation.y+=o.rs.y;
-
-      /* gentle float bob */
-      o.m.position.y = o.baseY + Math.sin(clk*o.fl.s+o.fl.p)*o.fl.a;
-
-      /* mouse horizontal attraction */
-      const targetX = o.wx + mx*o.ms.x;
-      o.m.position.x+=(targetX-o.m.position.x)*.04;
-
-      /* live colour & opacity update for theme switch */
+      o.m.position.y = o.baseY;
+      o.m.position.x = o.wx;
       o.m.material.color.setHex(col(o.ci));
       o.m.material.opacity=opa();
     });
