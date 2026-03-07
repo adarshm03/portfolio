@@ -49,6 +49,7 @@
       min-height:100vh; overflow-x:hidden; padding-bottom:140px;
       transition:var(--tt);
     }
+    @media(max-width:640px){ body{ padding-bottom:100px; } }
     body::before {
       content:''; position:fixed; inset:0; z-index:-8; pointer-events:none; opacity:0.5;
       background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
@@ -98,6 +99,8 @@
       transition:var(--tt);
     }
     @media(max-width:640px){ .gw{padding:40px 20px;} }
+    @media(max-width:640px){ .hb{height:160px;} .pc{height:auto;min-height:260px;} .pt{height:130px;} }
+    @media(max-width:640px){ .sk-wrap .tip{display:none;} }
 
     /* CLI */
     .cli { display:flex; align-items:center; gap:6px; font-family:'JetBrains Mono',monospace; font-size:.85rem; margin-bottom:28px; color:var(--mu); }
@@ -286,7 +289,8 @@
     .cbtn:hover { transform:translateY(-3px); box-shadow:0 8px 24px var(--ag),0 0 40px var(--ag); }
 
     /* DOCK */
-    .dock { position:fixed; bottom:32px; left:50%; transform:translateX(-50%); z-index:9990; display:flex; align-items:center; gap:6px; padding:8px 16px; border-radius:100px; border:1px solid var(--gbo); background:var(--gb); backdrop-filter:blur(40px) saturate(180%); box-shadow:var(--sh); }
+    .dock { position:fixed; bottom:24px; left:50%; transform:translateX(-50%); z-index:9990; display:flex; align-items:center; gap:6px; padding:8px 16px; border-radius:100px; border:1px solid var(--gbo); background:var(--gb); backdrop-filter:blur(40px) saturate(180%); box-shadow:var(--sh); max-width:calc(100vw - 24px); }
+    @media(max-width:420px){ .dock{gap:2px;padding:7px 10px;} .db{width:36px;height:36px;} .dsep{margin:0 2px;} }
     .db { width:42px; height:42px; display:flex; align-items:center; justify-content:center; border-radius:50%; color:var(--mu); transition:background .2s, color .2s, transform .2s, box-shadow .2s; text-decoration:none; background:none; border:none; cursor:pointer; }
     .db:hover { background:var(--input); color:var(--ac); transform:translateY(-5px); box-shadow:0 8px 20px var(--ag); }
     .dsep { width:1px; height:24px; background:var(--b); margin:0 4px; }
@@ -840,8 +844,7 @@ document.querySelectorAll('.cbtn').forEach(btn => {
   });
 });
 
-/* ══ REACTIVE CANVAS ══ */
-(function initReact() {
+  (function initReact() {
   const rc = document.getElementById('reactCanvas');
   const rx = rc.getContext('2d');
   let W, H, panelL, panelR;
@@ -858,6 +861,8 @@ document.querySelectorAll('.cbtn').forEach(btn => {
 
   let mx = -999, my = -999;
   window.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
+
+  function hasMargins() { return panelL > 40; }
 
   function randMarginX() {
     return Math.random() < 0.5
@@ -896,6 +901,9 @@ document.querySelectorAll('.cbtn').forEach(btn => {
   (function loop() {
     requestAnimationFrame(loop);
     rx.clearRect(0, 0, W, H);
+
+    /* skip all drawing on mobile where there are no side margins */
+    if (!hasMargins()) return;
 
     pulseT += 0.012;
     const scrollY = window.scrollY;
